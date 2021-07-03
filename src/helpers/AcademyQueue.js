@@ -54,7 +54,7 @@ export class AcademyQueue {
       this.state = AcademyQueueState.PROCESSING;
 
       const [ teacher, nAgent ] = agent.brain;
-      const inputs = worldStateToInputs(worldState, configState);
+      const inputs = worldStateToInputs(worldState, configState, agent.id);
 
       this.academy.step({
         teacherName: teacher,

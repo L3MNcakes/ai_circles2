@@ -11,7 +11,8 @@ export const createNetwork = (maxAgents, maxFood) => {
     (maxAgents) +       // Inputs for each Agent's current action
     (2 * maxAgents) +   // Inputs for position (x,y) of each Agent's target
     (maxAgents) +       // Inputs for each Agent's speed
-    (2 * maxFood);      // Inputs for the position of each Food resource
+    (2 * maxFood) +     // Inputs for the position of each Food resource
+    6;                  // Inputs for the specific agent's self-identity (position/action/etc.)
 
   const numActions = maxFood; // The network outputs a given food index the Agent to should go for
   const finalInputShape = (2 * baseInputShape) + numActions;
@@ -153,7 +154,7 @@ const mapAgentActionToInput = (action) => {
   }
 };
 
-export const worldStateToInputs = (world, config) => {
+export const worldStateToInputs = (world, config, agentId) => {
   const MAX_AGENTS = config.world.maxAgents;
   const MAX_FOOD = config.world.maxFood;
 
@@ -161,6 +162,7 @@ export const worldStateToInputs = (world, config) => {
   const agentActionList = [];
   const agentActionTargetList = [];
   const agentSpeedList = [];
+  const agentSelfIdentity = [];
 
   for (let i = 0; i < MAX_AGENTS; i++) {
     const foundAgent = world.agents[i];
@@ -169,16 +171,33 @@ export const worldStateToInputs = (world, config) => {
       agentPosList.push(foundAgent.position.x);
       agentPosList.push(foundAgent.position.y);
       agentActionList.push(mapAgentActionToInput(foundAgent.attemptedAction.type));
+      agentSpeedList.push(foundAgent.speed);
+
+      if (foundAgent.id === agentId) {
+        agentSelfIdentity.push(foundAgent.position.x);
+        agentSelfIdentity.push(foundAgent.position.y);
+        agentSelfIdentity.push(mapAgentActionToInput(foundAgent.attemptedAction.type));
+        agentSelfIdentity.push(foundAgent.speed);
+      }
 
       if (foundAgent.attemptedAction.targetPosition) {
         agentActionTargetList.push(foundAgent.attemptedAction.targetPosition.x);
         agentActionTargetList.push(foundAgent.attemptedAction.targetPosition.y);
+
+        if (foundAgent.id === agentId) {
+          agentSelfIdentity.push(foundAgent.attemptedAction.targetPosition.x);
+          agentSelfIdentity.push(foundAgent.attemptedAction.targetPosition.y);
+        }
       } else {
         agentActionTargetList.push(null);
         agentActionTargetList.push(null);
+
+        if (foundAgent.id === agentId) {
+          agentSelfIdentity.push(null);
+          agentSelfIdentity.push(null);
+        }
       }
 
-      agentSpeedList.push(foundAgent.speed);
     } else {
       agentPosList.push(null);
       agentPosList.push(null);
@@ -201,5 +220,12 @@ export const worldStateToInputs = (world, config) => {
     }
   }
 
-  return [ ...agentPosList, ...agentActionList, ...agentActionTargetList, ...agentSpeedList, ...foodPosList ];
+  return [
+    ...agentSelfIdentity,
+    ...agentPosList,
+    ...agentActionList,
+    ...agentActionTargetList,
+    ...agentSpeedList,
+    ...foodPosList,
+  ];
 };
