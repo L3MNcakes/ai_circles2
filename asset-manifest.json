@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.6592f0c1.chunk.css",
-    "main.js": "/static/js/main.d03a65aa.chunk.js",
-    "main.js.map": "/static/js/main.d03a65aa.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.16af4808.js",
-    "runtime-main.js.map": "/static/js/runtime-main.16af4808.js.map",
-    "static/js/2.04313a5b.chunk.js": "/static/js/2.04313a5b.chunk.js",
-    "static/js/2.04313a5b.chunk.js.map": "/static/js/2.04313a5b.chunk.js.map",
-    "static/js/3.9bfc448f.chunk.js": "/static/js/3.9bfc448f.chunk.js",
-    "static/js/3.9bfc448f.chunk.js.map": "/static/js/3.9bfc448f.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.6592f0c1.chunk.css.map": "/static/css/main.6592f0c1.chunk.css.map",
-    "static/js/2.04313a5b.chunk.js.LICENSE.txt": "/static/js/2.04313a5b.chunk.js.LICENSE.txt"
+    "main.css": "/ai_circles2/static/css/main.6592f0c1.chunk.css",
+    "main.js": "/ai_circles2/static/js/main.d03a65aa.chunk.js",
+    "main.js.map": "/ai_circles2/static/js/main.d03a65aa.chunk.js.map",
+    "runtime-main.js": "/ai_circles2/static/js/runtime-main.bb466708.js",
+    "runtime-main.js.map": "/ai_circles2/static/js/runtime-main.bb466708.js.map",
+    "static/js/2.04313a5b.chunk.js": "/ai_circles2/static/js/2.04313a5b.chunk.js",
+    "static/js/2.04313a5b.chunk.js.map": "/ai_circles2/static/js/2.04313a5b.chunk.js.map",
+    "static/js/3.9bfc448f.chunk.js": "/ai_circles2/static/js/3.9bfc448f.chunk.js",
+    "static/js/3.9bfc448f.chunk.js.map": "/ai_circles2/static/js/3.9bfc448f.chunk.js.map",
+    "index.html": "/ai_circles2/index.html",
+    "static/css/main.6592f0c1.chunk.css.map": "/ai_circles2/static/css/main.6592f0c1.chunk.css.map",
+    "static/js/2.04313a5b.chunk.js.LICENSE.txt": "/ai_circles2/static/js/2.04313a5b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.16af4808.js",
+    "static/js/runtime-main.bb466708.js",
     "static/js/2.04313a5b.chunk.js",
     "static/css/main.6592f0c1.chunk.css",
     "static/js/main.d03a65aa.chunk.js"
